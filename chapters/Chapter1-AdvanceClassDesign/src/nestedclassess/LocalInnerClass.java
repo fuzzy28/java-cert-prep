@@ -15,6 +15,7 @@ public class LocalInnerClass {
 		name = "x";
 		class localClass {
 			static final double PI = 3.1416;
+//			static final LocalInnerClass localInnerClass = new LocalInnerClass(); // DOES NOT COMPILE, final variable doesn't work for instance variables.
 
 			void displayOuterClassName() {
 				System.out.println("Outer name : " + LocalInnerClass.this.name);

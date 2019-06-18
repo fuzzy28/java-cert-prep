@@ -1,5 +1,8 @@
 package interfaceusage;
 
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
 @FunctionalInterface
 public interface InterfaceUsage {
 
@@ -30,6 +33,17 @@ interface InterfaceUsage2 {
 
 }
 
+@FunctionalInterface
+interface InterfaceUsage3 {
+	String test();
+}
+
+@FunctionalInterface
+interface InterfaceUsage4<T> {
+	
+	boolean test(T t);
+}
+
 class Class1 implements InterfaceUsage, InterfaceUsage2 {
 
 	@Override
@@ -41,6 +55,28 @@ class Class1 implements InterfaceUsage, InterfaceUsage2 {
 	public void defaultMethod(String name) {
 		System.out.println("Override same method name from both interfaces, else compilation error");
 	}
-
 	
+	void implementFunctionalInterface() {
+		InterfaceUsage iu = () -> { System.out.println("Anonymous implementation");};
+		iu.test();
+	}
+	
+	void implementSupplierInterface() {
+		InterfaceUsage3 iu = () -> "This is a test";
+//		Supplier<String> s = iu; // DOES NOT COMPILE, still not compatible
+		System.out.println(iu.test());
+	}
+	
+	void implementPredicateInteface() {
+		InterfaceUsage4<String> s = (i) -> i.contains("a");
+		System.out.println(s.test("abc"));
+	}
+	
+	public static void main(String[] args) {
+		Class1 c1 = new Class1();
+		c1.implementFunctionalInterface();
+		c1.implementSupplierInterface();
+		c1.implementPredicateInteface();
+	}
+
 }
