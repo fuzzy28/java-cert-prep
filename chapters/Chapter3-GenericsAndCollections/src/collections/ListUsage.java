@@ -51,7 +51,6 @@ public class ListUsage {
 	// Implements both List, Double-ended Queue (Deque)
 	static class LinkedListImplementation {
 		public LinkedListImplementation() {
-			
 			LinkedList<String> linkedList = new LinkedList<>();
 			linkedList.add("a"); //add > linkedLast
 			linkedList.add("b");
@@ -59,6 +58,7 @@ public class ListUsage {
 			linkedList.addLast("last item 1"); //addLast > LinkedLast
 			linkedList.offer("last item 2"); // offer > add > LinkedLast
 			linkedList.offerFirst("first item"); //offerFirst > addFirst > LinkedFirst		
+			linkedList.push("push first"); //pushFirst > addFirst > LinkedFirst
 			linkedList.forEach(System.out::println);
 		}
 	}
