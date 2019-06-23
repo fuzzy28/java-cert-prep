@@ -45,6 +45,8 @@ public class ListUsage {
 			System.out.println("Setting index 0 value to '0' : " + strings.set(0, "0")); // returns the previous element
 			System.out.println("___________________\nPrinting again");
 			strings.forEach(System.out::println);
+			
+//			strings.forEach(x -> strings.add(x)); // throws concurrentModificationException
 		}
 	}
 
