@@ -37,20 +37,38 @@ public class ComparatorUsage {
 		});
 	}
 
-	static void useCustomOrdering() {
-		Set<Student> orderByName = new TreeSet<>(Comparator.comparing(Student::getName));
-		orderByName.add(new Student("Angel", 87));
-		orderByName.add(new Student("Stef", 77));
-		orderByName.add(new Student("Joel", 89));
-		orderByName.add(new Student("John", 85));
-		System.out.println("Printing students in alphabetical order");
+	static void useCustomCorderOldWay() {
+		class CompareStudent implements Comparator<Student> {
+
+			public int compare(Student s1, Student s2) {
+				return s1.name.compareTo(s2.name);
+			}
+		}
+		Set<Student> orderByName = new TreeSet<>(new CompareStudent());
+		addStudents(orderByName);
+		System.out.println("Printing students by name using Comparator class");
 		orderByName.forEach(x -> System.out.println(x.name));
+	}
+
+	static void useCustomOrderingLambda() {
+		Set<Student> orderByName = new TreeSet<>(Comparator.comparing(Student::getName));
+		addStudents(orderByName);
+		System.out.println("Printing students by name using lambda Comparator.comparing");
+		orderByName.forEach(x -> System.out.println(x.name));
+	}
+
+	static void addStudents(Set<Student> students) {
+		students.add(new Student("Angel", 87));
+		students.add(new Student("Stef", 77));
+		students.add(new Student("Joel", 89));
+		students.add(new Student("John", 85));
 	}
 
 	public static void main(String[] args) {
 		basicTest();
 		commonErrors();
 		useDefaultOrdering();
-		useCustomOrdering();
+		useCustomCorderOldWay();
+		useCustomOrderingLambda();
 	}
 }

@@ -45,8 +45,13 @@ public class ListUsage {
 			System.out.println("Setting index 0 value to '0' : " + strings.set(0, "0")); // returns the previous element
 			System.out.println("___________________\nPrinting again");
 			strings.forEach(System.out::println);
-			
+
 //			strings.forEach(x -> strings.add(x)); // throws concurrentModificationException
+
+			System.out.println("Removing an object contains abc : " + strings.removeIf(x -> x.contains("abcd")));
+			strings.replaceAll(x -> x.toUpperCase());
+			System.out.println("___________________\nPrinting again, all in upper case");
+			strings.forEach(System.out::println);
 		}
 	}
 
@@ -54,13 +59,13 @@ public class ListUsage {
 	static class LinkedListImplementation {
 		public LinkedListImplementation() {
 			LinkedList<String> linkedList = new LinkedList<>();
-			linkedList.add("a"); //add > linkedLast
+			linkedList.add("a"); // add > linkedLast
 			linkedList.add("b");
-			linkedList.addFirst("before a"); //addFirst > linkedFirst
-			linkedList.addLast("last item 1"); //addLast > LinkedLast
+			linkedList.addFirst("before a"); // addFirst > linkedFirst
+			linkedList.addLast("last item 1"); // addLast > LinkedLast
 			linkedList.offer("last item 2"); // offer > add > LinkedLast
-			linkedList.offerFirst("first item"); //offerFirst > addFirst > LinkedFirst		
-			linkedList.push("push first"); //pushFirst > addFirst > LinkedFirst
+			linkedList.offerFirst("first item"); // offerFirst > addFirst > LinkedFirst
+			linkedList.push("push first"); // pushFirst > addFirst > LinkedFirst
 			linkedList.forEach(System.out::println);
 		}
 	}
