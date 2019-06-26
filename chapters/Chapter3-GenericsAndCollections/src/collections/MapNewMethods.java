@@ -21,10 +21,16 @@ public class MapNewMethods {
 	static void merge() {
 		Map<String, String> map = new HashMap<>();
 		map.put("name", "Joel");
-
+		
+//		String newVal = " Jr.";
+//		if(map.containsKey("name")) {
+//			map.put("name", "Joel" + newVal);
+//		} else {
+//			map.put("name", newVal);
+//		}
+		// instead of doing the above, we can perform atomic operation like below
 		map.merge("name", " Jr.", String::concat); // will give you an option on what to do in case key exists, like
-													// merge two existing values.
-
+													// merge two existing values. (a,b) -> a.concat(b)
 		map.merge("lastName", "Ruelos", (a, b) -> "this wont get executed");
 
 		System.out.println(map);
@@ -33,6 +39,11 @@ public class MapNewMethods {
 	static void computeIfAbsent() {
 		Map<String, String> map = new HashMap<>();
 		map.put("name", "joel");
+
+//		if (map.containsKey("lastName")) {
+//			map.put("lastName", new String("Ruelos"));
+//		}
+		// instead of doing the above, we can perform atomic operation like below
 
 		System.out.println(map.computeIfAbsent("lastName", (s) -> new String("Ruelos")));
 

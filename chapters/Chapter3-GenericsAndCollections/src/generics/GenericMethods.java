@@ -27,7 +27,7 @@ public class GenericMethods {
 												// there's a problem due to type
 			// erasure, printNames accepts List<Object> now
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println("Error: " + e.getMessage());
 		}
 	}
 
@@ -36,7 +36,7 @@ public class GenericMethods {
 			numbers.add("not a number"); // RUNTIME EXEPTION! ( UnsupportedOperationException) list is list of numbers
 											// now
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println("Error: " + e.getMessage());
 		}
 		numbers.forEach(System.out::println);
 	}
