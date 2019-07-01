@@ -5,11 +5,21 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public class TerminalOperations {
 
 	static List<Integer> nums = Arrays.asList(1, 2, 3, 4, 5);
 
+	static void streamAlreadyClosed() {
+		Stream<Integer> streamNums = nums.stream();
+		System.out.println(streamNums.count());
+		try {
+			System.out.println(streamNums.count()); // Runtime Exception! stream already closed
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
 	static void count() {
 		long count = nums.stream().count();
 		System.out.println("Stream count: " + count);
@@ -60,6 +70,7 @@ public class TerminalOperations {
 	}
 
 	public static void main(String[] args) {
+		streamAlreadyClosed();
 		count();
 		minMax();
 		findAny();
