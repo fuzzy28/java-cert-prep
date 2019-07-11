@@ -9,6 +9,7 @@
 	<modules>
 		<module>chapters/Chapter1-AdvanceClassDesign</module>
     <module>Chapter4-FunctionalProgramming</module>
+    <module>Chapter5-DatesStringLocalization</module>
   </modules>
 
 	<build>

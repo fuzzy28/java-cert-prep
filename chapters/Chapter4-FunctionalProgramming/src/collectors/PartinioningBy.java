@@ -15,6 +15,9 @@ public class PartinioningBy {
 		System.out.println("--------partitioningByDefaultCollection--------");
 		Map<Boolean, List<String>> map = names.stream().collect(Collectors.partitioningBy(s -> s.startsWith("J")));
 		System.out.println(map);
+		
+		Map<Boolean, List<String>> startsWithX = names.stream().collect(Collectors.partitioningBy(s -> s.startsWith("X")));
+		System.out.println(startsWithX);
 	}
 
 	static void partitioningByCollectionSet() {
