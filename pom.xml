@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jrue.poc.java.cert</groupId>
 	<artifactId>java8cert</artifactId>
@@ -8,9 +10,11 @@
 
 	<modules>
 		<module>chapters/Chapter1-AdvanceClassDesign</module>
-    <module>Chapter4-FunctionalProgramming</module>
-    <module>Chapter5-DatesStringLocalization</module>
-  </modules>
+		<module>chapters/Chapter2-DesignPatternsAndPrinciples</module>
+		<module>chapters/Chapter3-GenericsAndCollections</module>
+		<module>chapters/Chapter4-FunctionalProgramming</module>
+		<module>chapters/Chapter5-DatesStringLocalization</module>
+	</modules>
 
 	<build>
 		<sourceDirectory>src</sourceDirectory>
