@@ -13,6 +13,7 @@
 		<module>chapters/Chapter4-FunctionalProgramming</module>
 		<module>chapters/Chapter5-DatesStringLocalization</module>
     <module>Chapter6-ExceptionsAndAssertions</module>
+    <module>Chapter7-Concurrency</module>
   </modules>
 
 	<build>
