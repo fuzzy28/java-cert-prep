@@ -14,6 +14,7 @@
 		<module>chapters/Chapter5-DatesStringLocalization</module>
     <module>Chapter6-ExceptionsAndAssertions</module>
     <module>Chapter7-Concurrency</module>
+    <module>Chapter8-IO</module>
   </modules>
 
 	<build>
