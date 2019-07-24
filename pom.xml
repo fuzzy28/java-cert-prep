@@ -15,6 +15,7 @@
     <module>Chapter6-ExceptionsAndAssertions</module>
     <module>Chapter7-Concurrency</module>
     <module>Chapter8-IO</module>
+    <module>Chapter9-NIO</module>
   </modules>
 
 	<build>

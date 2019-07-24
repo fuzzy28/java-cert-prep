@@ -7,8 +7,8 @@
     <artifactId>java8cert</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>Chapter6-ExceptionsAndAssertions</artifactId>
-  <name>Chapter6-ExceptionsAndAssertions</name>
+  <artifactId>Chapter9-NIO</artifactId>
+  <name>Chapter9-NIO</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
