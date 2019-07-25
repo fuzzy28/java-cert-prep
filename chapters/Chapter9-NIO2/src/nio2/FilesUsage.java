@@ -9,6 +9,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.nio.file.attribute.FileTime;
+import java.nio.file.attribute.UserPrincipal;
+import java.time.Instant;
 
 public class FilesUsage {
 
@@ -98,7 +101,6 @@ public class FilesUsage {
 	static void readAllLines() throws IOException {
 		System.out.println("---------readAllLines---------");
 		Files.readAllLines(p).forEach(System.out::println);
-		;
 	}
 
 	static void streamLines() throws IOException {
@@ -116,6 +118,40 @@ public class FilesUsage {
 		}
 	}
 
+	static void printProperties() {
+		System.out.println("---------printProperties---------");
+		System.out.println("isDirectory: " + Files.isDirectory(directory));
+		System.out.println("isRegularFIle: " + Files.isRegularFile(file));
+		System.out.println("isSymbolicLink: " + Files.isSymbolicLink(file_copy));
+		try {
+			System.out.println("isHidden: " + Files.isHidden(file));
+		} catch (IOException e) {
+			System.err.println("Error while checking if file is hidden.");
+		}
+		System.out.println("isReadable:" + Files.isReadable(file));
+		System.out.println("isExecutable: " + Files.isExecutable(file));
+		try {
+			System.out.println("size: " + Files.size(file));
+		} catch (Exception e) {
+			System.err.println("Error while checking the file size.");
+		}
+		try {
+			System.out.println("getLastModifiedTime: " + Files.getLastModifiedTime(file));
+			System.out.println("Changing modified time to now");
+			Files.setLastModifiedTime(file, FileTime.from(Instant.now()));
+			System.out.println("getLastModifiedTime: " + Files.getLastModifiedTime(file));
+
+			System.out.println("getOwner: " + Files.getOwner(file).getName());
+			System.out.println("Try to change owner");
+
+			UserPrincipal up = FileSystems.getDefault().getUserPrincipalLookupService().lookupPrincipalByName("joel");
+			Files.setOwner(file, up);
+		} catch (IOException e) {
+			System.err.println(e.getClass());
+		}
+
+	}
+
 	public static void main(String[] args) throws IOException {
 		cleanup();
 		create();
@@ -127,5 +163,6 @@ public class FilesUsage {
 		readAllLines();
 		streamLines();
 		isSameFile();
+		printProperties();
 	}
 }
