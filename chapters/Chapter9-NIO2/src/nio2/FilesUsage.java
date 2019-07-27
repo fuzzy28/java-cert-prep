@@ -111,10 +111,15 @@ public class FilesUsage {
 	static void isSameFile() {
 		System.out.println("---------isSameFile---------");
 		try {
-			System.out.println(Files.isSameFile(file,
-					directory.getName(0).resolve(FileSystems.getDefault().getPath("fileUsage.txt"))));
+			Path path = directory.resolve(Paths.get("..")).resolve(Paths.get("fileUsage.txt"));
+			System.out.println(Files.isSameFile(file, path.normalize()));
+
+			System.out.println("---------isSamePath---------");
+			System.out.println(file);
+			System.out.println(path);
+			System.out.println(file.equals(path)); //will become true unless it's normalized
 		} catch (IOException ioe) {
-			System.err.println(ioe.getMessage());
+			ioe.printStackTrace();
 		}
 	}
 

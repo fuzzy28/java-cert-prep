@@ -58,6 +58,10 @@ public class ResultSetProperties {
 			rs.beforeFirst();
 			rs.next();
 			printInfo(rs);
+			System.out.println("Go before first using absolute:" + rs.absolute(0));
+			printInfo(rs);
+			System.out.println("Go next after before first: " + rs.next());
+			printInfo(rs);
 		}
 	}
 

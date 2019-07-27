@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -32,8 +33,9 @@ public class ObjectStreaming {
 		System.out.println("--------deserializeObject--------");
 		if (file.exists()) {
 			MyObject.message = "message modified before deserialization";
-			try (ObjectInputStream obs = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))) {
-				Object o = obs.readObject();
+			try (InputStream obs = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))) { //throws IOException!
+//				Object o = obs.readObject(); // read object method won't be available!
+				Object o = ((ObjectInputStream) obs).readObject(); //throws ClassNotFoundException!
 				if (o instanceof MyObject) {
 					MyObject myObject = (MyObject) o;
 					System.out.println(myObject);
