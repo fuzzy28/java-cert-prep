@@ -37,7 +37,7 @@ public class ListUsage {
 																		// removed
 //			System.out.println(strings.remove(200)); // Runtime Exception! index out of bounds!
 			strings.forEach(System.out::println);
-
+			
 			System.out.println(strings.isEmpty() ? "Empty!" : "Not empty!");
 			System.out.println("Size is: " + strings.size());
 			System.out.println("Index of String3: " + strings.indexOf("String3"));
@@ -52,6 +52,14 @@ public class ListUsage {
 			strings.replaceAll(x -> x.toUpperCase());
 			System.out.println("___________________\nPrinting again, all in upper case");
 			strings.forEach(System.out::println);
+			
+			List<Integer> i = new ArrayList<>();
+			i.add(1);
+			i.add(2);
+			i.add(3);
+			System.out.println("Removing index 1 from integer: " + i.remove(1));
+			System.out.println("Removing actual value 1: " + i.remove(new Integer(1)));
+			i.forEach(System.out::println);
 		}
 	}
 

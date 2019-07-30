@@ -1,6 +1,8 @@
 package exceptions;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class BasicTryStatement {
 
@@ -42,6 +44,19 @@ public class BasicTryStatement {
 //			e = null; // compile error, e is effectively final
 		}
 //		catch(ParseException pe) {} // compilation error, this exception is never thrown from the try statement body
+	}
+
+	static void catchIt() throws SQLException {
+		System.out.println("-------catchIt-------");
+		try {
+			readFromDatabase();
+//		} catch(SQLException | IOException e) { //compiler error! IOException is not thrown in the try statement!
+		} catch(SQLException e) {
+			throw e;
+		}
+	}
+
+	private static void readFromDatabase() throws SQLException {
 	}
 
 	public static void main(String[] args) {

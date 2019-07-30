@@ -15,12 +15,14 @@ public class SampleGenerics {
 		genericClass2.setVariable3("third");
 		genericClass2.setVariable4("fourth");
 		System.out.println(genericClass2);
-		
-		
-		GenericClass rawGenericClass = new GenericClass(); //warnings suppressed!
+
+		GenericClass rawGenericClass = new GenericClass(); // warnings suppressed!
 		rawGenericClass.setVariable1(new SampleGenerics());
 		rawGenericClass.setVariable2(new SampleGenerics());
 		System.out.println(rawGenericClass);
+
+		GenericClass<?> gc = new GenericClass<String>(); // if wildcard(?), right hand can be of any type
+
 	}
 
 }

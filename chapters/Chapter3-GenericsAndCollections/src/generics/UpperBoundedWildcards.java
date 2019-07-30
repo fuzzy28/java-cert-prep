@@ -14,14 +14,16 @@ public class UpperBoundedWildcards {
 		List<? extends Number> n3 = new ArrayList<Float>();
 		List<? extends Number> n4 = new ArrayList<Long>();
 
+//		List<? extends Number> n5 = new ArrayList<? extends Number>(); // Wildcard cannot occur on the right side!
+
 //		n1.add(1); // DOES NOT COMPILE, upperbounded wildcard is IMMUTABLE! n1 can be List<Integer>, List<Double> etc...
-		
- 	}
+
+	}
 
 	static void printList(List<Number> numbers) {
 	}
 
-	//DOES NOT COMPILE, generic type erasure will make the two methods duplicate.
+	// DOES NOT COMPILE, generic type erasure will make the two methods duplicate.
 //	static void printList(List<? extends Number> numbers) {
 //	}
 }

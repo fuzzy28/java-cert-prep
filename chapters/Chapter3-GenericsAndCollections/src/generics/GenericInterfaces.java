@@ -38,5 +38,10 @@ class ImplementGenericFunction2<U> implements GenericFunction2<String, String, U
 	public U apply(String first, String second) {
 		return u;
 	}
+	
+	@Override
+	public String toString() {
+		return u.toString();
+	}
 
 }

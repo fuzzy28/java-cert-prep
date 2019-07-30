@@ -17,6 +17,7 @@ public class ImmutableObject {
 	}
 }
 
+//mark the class final
 final class Immutable {
 
 	// Mark all of the instance variables private and final

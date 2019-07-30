@@ -14,6 +14,8 @@ public class FormattingDates {
 //		System.out.println(ld.format(DateTimeFormatter.ISO_LOCAL_TIME)); // throws Runtime exception
 		System.out.println("ISO LOCAL DATE: " + ld.format(DateTimeFormatter.ISO_LOCAL_DATE));
 		System.out.println("Short: " + ld.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)));
+		System.out.println("Short datetime: " + LocalDateTime.of(ld, LocalTime.now())
+				.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)));
 		System.out.println("Medium: " + ld.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)));
 		System.out.println("Long: " + ld.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG)));
 		System.out.println("Full: " + ld.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)));

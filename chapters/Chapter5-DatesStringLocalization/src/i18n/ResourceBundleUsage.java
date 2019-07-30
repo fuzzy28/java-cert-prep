@@ -1,5 +1,6 @@
 package i18n;
 
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class ResourceBundleUsage {

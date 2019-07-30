@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.time.Month;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
+import java.util.concurrent.TimeUnit;
 
 public class PeriodDuration {
 
@@ -33,6 +34,10 @@ public class PeriodDuration {
 		System.out.println("Duration of 10 hours: " + d);
 		d = Duration.ofMinutes(10);
 		System.out.println("Duration of 10 minutes: " + d);
+		d = Duration.of(60, ChronoUnit.SECONDS);
+		System.out.println("Duration of 60 secs: " + d);
+		d = Duration.of(1, ChronoUnit.MINUTES);
+		System.out.println("Duration of 1 min: " + d);
 	}
 
 	static void difference() {
@@ -42,16 +47,27 @@ public class PeriodDuration {
 
 //		System.out.println("# of Days between June 28, 2019 and now: " + ChronoUnit.HOURS.between(ld1, ld2)); // Time is unsupported
 		System.out.println("# of Days between June 28, 2019 and now: " + ChronoUnit.DAYS.between(ld1, ld2));
-		
+
 		LocalTime lt1 = LocalTime.of(22, 20);
 		LocalTime lt2 = LocalTime.now();
 //		System.out.println("# of minutes between 22:20 and now: " + ChronoUnit.DAYS.between(lt1, lt2)); // Days is unsupported
-		System.out.println("# of minutes between 22:20 and now: " + ChronoUnit.MINUTES.between(lt1, lt2)); 
+		System.out.println("# of minutes between 22:20 and now: " + ChronoUnit.MINUTES.between(lt1, lt2));
+	}
+
+	static void equality() {
+		System.out.println("-----------equality-----------");
+		String d = Duration.ofDays(1).toString(); // regardless on number of days, toString() will always be in Hours!
+		String p = Period.ofDays(1).toString();
+		System.out.println("Duration: " + d);
+		System.out.println("Period: " + p);
+		System.out.println("Reference equals: " + (d == p));
+		System.out.println("Method equals: " + d.equals(p));
 	}
 
 	public static void main(String[] args) {
 		period();
 		duration();
 		difference();
+		equality();
 	}
 }

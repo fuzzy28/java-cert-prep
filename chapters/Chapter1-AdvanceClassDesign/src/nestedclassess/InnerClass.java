@@ -92,6 +92,7 @@ public class InnerClass {
 		ic.callOuterInstanceMembers();
 		ic.displayMyName();
 		ic.displayOuterClassName();
+//		System.out.println(new InnerClass1()); // compiler error! any inner class should have an instance of the outer class
 	}
 }
 
