@@ -11,6 +11,7 @@ import setup.InitializeDatabase;
 public class ResultSetProperties {
 
 	static void traverseResultSet() throws SQLException {
+		System.out.println("----------traverseResultSet----------");
 		try (Connection con = DriverManager.getConnection(InitializeDatabase.url);
 				Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
 			stmt.execute(InitializeDatabase.loadResource("Employee.sql"));
@@ -55,7 +56,7 @@ public class ResultSetProperties {
 			} else {
 				System.out.println("Row not deleted!");
 			}
-			rs.beforeFirst();
+			rs.beforeFirst(); // VOID!
 			rs.next();
 			printInfo(rs);
 			System.out.println("Go before first using absolute:" + rs.absolute(0));
@@ -73,7 +74,22 @@ public class ResultSetProperties {
 		}
 	}
 
+	static void traverseNotScrollbable() {
+		System.out.println("----------traverseNotScrollbable----------");
+		try (Connection con = DriverManager.getConnection(InitializeDatabase.url);
+				Statement stmt = con.createStatement()) {
+			stmt.execute(InitializeDatabase.loadResource("Employee.sql"));
+			ResultSet rs = stmt.executeQuery("SELECT * FROM Employee");
+			System.out.println("Get row 3: " + rs.absolute(3)); // no issue on type forward only
+			System.out.println("Get row 1: " + rs.absolute(1)); // throws runtime error, cannot go back to previous one
+			System.out.println("Get previous: " + rs.previous()); //throws runtime exception since resultset is not scrollable!
+		} catch(SQLException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+
 	public static void main(String[] args) throws SQLException {
 		traverseResultSet();
+		traverseNotScrollbable();
 	}
 }

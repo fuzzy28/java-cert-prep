@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -106,6 +107,7 @@ public class FilesUsage {
 	static void streamLines() throws IOException {
 		System.out.println("---------readAllLines---------");
 		Files.lines(p).forEach(System.out::println);
+//		Files.lines(p, ""); // second argument is CharSet not STRING!
 	}
 
 	static void isSameFile() {

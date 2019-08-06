@@ -2,11 +2,13 @@ package datetimes;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 import java.time.Period;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.concurrent.TimeUnit;
 
 public class PeriodDuration {
 
@@ -38,6 +40,10 @@ public class PeriodDuration {
 		System.out.println("Duration of 60 secs: " + d);
 		d = Duration.of(1, ChronoUnit.MINUTES);
 		System.out.println("Duration of 1 min: " + d);
+		d = Duration.of(61, ChronoUnit.SECONDS);
+		System.out.println("Duration of 61 secs: " + d);
+		d = Duration.of(1500, ChronoUnit.MILLIS);
+		System.out.println("Duration of 1500 millis: " + d);
 	}
 
 	static void difference() {
@@ -47,6 +53,11 @@ public class PeriodDuration {
 
 //		System.out.println("# of Days between June 28, 2019 and now: " + ChronoUnit.HOURS.between(ld1, ld2)); // Time is unsupported
 		System.out.println("# of Days between June 28, 2019 and now: " + ChronoUnit.DAYS.between(ld1, ld2));
+
+		System.out.println("Period between now and June 28, 2019: " + Period.between(ld2, ld1)); // will show negative
+																									// value if first
+																									// argument is
+																									// greater
 
 		LocalTime lt1 = LocalTime.of(22, 20);
 		LocalTime lt2 = LocalTime.now();
@@ -64,10 +75,21 @@ public class PeriodDuration {
 		System.out.println("Method equals: " + d.equals(p));
 	}
 
+	static void dayLightDifference() {
+		System.out.println("-----------dayLightDifference-----------");
+		LocalDateTime ld1 = LocalDateTime.of(2015, Month.NOVEMBER, 1, 2, 0);
+		ZonedDateTime zd1 = ZonedDateTime.of(ld1, ZoneId.of("US/Eastern"));
+		LocalDateTime ld2 = LocalDateTime.of(2015, Month.NOVEMBER, 1, 1, 0);
+		ZonedDateTime zd2 = ZonedDateTime.of(ld2, ZoneId.of("US/Eastern"));
+		long x = ChronoUnit.HOURS.between(zd1, zd2);
+		System.out.println(x);
+	}
+
 	public static void main(String[] args) {
 		period();
 		duration();
 		difference();
 		equality();
+		dayLightDifference();
 	}
 }

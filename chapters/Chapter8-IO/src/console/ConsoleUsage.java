@@ -1,6 +1,7 @@
 package console;
 
 import java.io.Console;
+import java.time.LocalDate;
 
 public class ConsoleUsage {
 
@@ -22,6 +23,8 @@ public class ConsoleUsage {
 			} while (!result);
 
 			c.writer().println("Hello master " + name + "!");
+			c.printf("Terminating process at %s...", LocalDate.now().toString());
+			c.format("Goodbye %s", name);
 		} else {
 			System.out.println("Console is not available!");
 		}

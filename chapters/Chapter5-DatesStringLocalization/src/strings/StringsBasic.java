@@ -22,6 +22,7 @@ public class StringsBasic {
 		System.out.println("Reverse sb2: " + sb2);
 		System.out.println("sb equals sb2 reversed string: " + sb.equals(sb2));
 		System.out.println("Delete last 3 chars: " + sb.delete(3, 100)); // upper bound doesn't throw runtime exception
+		System.out.println("Insert at position 2: " + sb2.insert(2, 'X'));
 	}
 
 	static void stringBuffer() {

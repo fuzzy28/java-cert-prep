@@ -33,9 +33,10 @@ public class ObjectStreaming {
 		System.out.println("--------deserializeObject--------");
 		if (file.exists()) {
 			MyObject.message = "message modified before deserialization";
-			try (InputStream obs = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))) { //throws IOException!
+			try (InputStream obs = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))) { // throws
+																												// IOException!
 //				Object o = obs.readObject(); // read object method won't be available!
-				Object o = ((ObjectInputStream) obs).readObject(); //throws ClassNotFoundException!
+				Object o = ((ObjectInputStream) obs).readObject(); // throws ClassNotFoundException!
 				if (o instanceof MyObject) {
 					MyObject myObject = (MyObject) o;
 					System.out.println(myObject);
@@ -52,7 +53,23 @@ public class ObjectStreaming {
 
 }
 
-class MyObject implements Serializable {
+class X {
+
+}
+
+class GrandParent {
+	public GrandParent() {
+		System.out.println("Grand constructor invoked!");
+	}
+}
+
+class Parent extends GrandParent implements Serializable {
+	public Parent() {
+		System.out.println("Parent constructor invoked!");
+	}
+}
+
+class MyObject extends Parent implements Serializable {
 	/**
 	 * 
 	 */
@@ -61,9 +78,10 @@ class MyObject implements Serializable {
 	int age;
 	volatile int phoneNumber;
 	static String message;
+	X o = null; // not serialized object is okay as long as value is null
 
 	public MyObject() { // won't be executed on deserialization
-		System.out.println("Default constructor invoked"); 
+		System.out.println("Default constructor invoked");
 	}
 
 	public MyObject(String name, int age) { // won't be executed on deserialization

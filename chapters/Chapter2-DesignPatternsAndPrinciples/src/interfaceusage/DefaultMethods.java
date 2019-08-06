@@ -1,5 +1,7 @@
 package interfaceusage;
 
+import java.util.List;
+
 public interface DefaultMethods extends Interface1, Interface2 {
 
 	// REQUIRED TO OVERRIDE! else compiler error since method() exists in both

@@ -11,12 +11,12 @@ public class Predicateusage {
 		Predicate<String> startsAndEndsWithA = startsWithA.and(endsWithA);
 		Predicate<String> startsOrEndsWithA = startsWithA.or(endsWithA);
 		Predicate<String> notStartsWithA = startsWithA.negate();
-
 		System.out.println("String 'abc' starts with a: " + startsWithA.test("abc"));
 		System.out.println("String 'abc' ends with a: " + endsWithA.test("abc"));
 		System.out.println("String 'abca' starts AND ends with a: " + startsAndEndsWithA.test("abca"));
 		System.out.println("String 'xbca' starts OR ends with a: " + startsOrEndsWithA.test("xbca"));
 		System.out.println("String 'xbca' NOT starts with a: " + notStartsWithA.test("xbca"));
+		
 	}
 
 	static void bipredicate() {

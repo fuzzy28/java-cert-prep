@@ -1,5 +1,6 @@
 package streams;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.LongFunction;
 import java.util.function.LongToDoubleFunction;
@@ -8,6 +9,7 @@ import java.util.function.LongUnaryOperator;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 public class PrimitiveStreams {
 
@@ -34,6 +36,8 @@ public class PrimitiveStreams {
 		IntStream.rangeClosed(1, 10).forEach(System.out::print);
 		System.out.println("\nConverting integers to double");
 		IntStream.of(1, 2, 3).mapToDouble(x -> x).forEach(System.out::println);
+		int sum = IntStream.of(1, 2, 3).sum();
+		System.out.println("Sum of 1,2,3: " + sum);
 	}
 
 	static void longStream() {
@@ -61,11 +65,19 @@ public class PrimitiveStreams {
 		System.out.println("Converting long values to String");
 		LongStream.of(1L, 2, 3).mapToObj(lf).forEach(System.out::println);
 	}
+	
+	static void arrayStream() {
+		System.out.println("____________arrayStream_____________");
+		List<Integer> i = Arrays.asList(1,2,3);
+		Stream<Object> o = Arrays.stream(i.toArray());
+		o.forEach(System.out::println);
+	}
 
 	public static void main(String[] args) {
 		doubleStream();
 		intStream();
 		longStream();
 		primitiveFunctions();
+		arrayStream();
 	}
 }

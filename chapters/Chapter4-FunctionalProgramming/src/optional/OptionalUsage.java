@@ -1,6 +1,8 @@
 package optional;
 
 import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.stream.IntStream;
 
 public class OptionalUsage {
 
@@ -54,19 +56,26 @@ public class OptionalUsage {
 		System.out.println("Getting default");
 		return "Default Name";
 	}
-	
+
 	static void createOptionalWithFilter() {
 		String name = "Joel";
-		System.out.println(Optional.ofNullable(name).filter(s -> s.startsWith("a")).orElse("Name doesn't start with 'a'!"));		
+		System.out.println(
+				Optional.ofNullable(name).filter(s -> s.startsWith("a")).orElse("Name doesn't start with 'a'!"));
 		Integer age = 27;
-		System.out.println("Legal age? : " +Optional.ofNullable(age).filter(i -> i > 18).isPresent());
+		System.out.println("Legal age? : " + Optional.ofNullable(age).filter(i -> i > 18).isPresent());
 	}
-	
+
 	static void createOptionalAndMap() {
 		String name = "Joel";
 		Optional.ofNullable(name).map(String::length).ifPresent(System.out::println);
 	}
-	
+
+	static void optionalDoubleInAverage() {
+		IntStream is1 = IntStream.range(3, 11); // 1
+		OptionalDouble x = is1.average(); // 2
+		System.out.println(x); // 3
+	}
+
 	public static void main(String[] args) {
 		System.out.println("___________createEmptyOptional___________");
 		createEmptyOptional();
@@ -84,5 +93,7 @@ public class OptionalUsage {
 		createOptionalWithFilter();
 		System.out.println("___________createOptionalAndMap___________");
 		createOptionalAndMap();
+		System.out.println("___________optionalDoubleInAverage___________");
+		optionalDoubleInAverage();
 	}
 }

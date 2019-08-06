@@ -9,10 +9,12 @@ public class ConsumerUsage {
 		Consumer<String> consumeString = System.out::println;
 		Consumer<Integer> consumeInteger = System.out::println;
 		Consumer<ConsumerUsage> consumeClass = System.out::println;
+		Consumer consume = System.out::println;
 
 		consumeString.accept("Hello World!");
 		consumeInteger.accept(6281992);
 		consumeClass.accept(new ConsumerUsage());
+		consume.accept("Anything can be passed here!");
 
 	}
 
