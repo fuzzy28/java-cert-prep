@@ -20,6 +20,8 @@ public class InnerClass {
 	class InnerClass1 {
 
 		static final String x = "";
+		
+		String x123;
 
 		private String name = "InnerClass name";
 
@@ -86,7 +88,7 @@ public class InnerClass {
 	private abstract class InnerClass4 extends InnerClass1 implements i1 {
 
 	}
-
+	
 	public static void main(String[] args) {
 		InnerClass.InnerClass1 ic = new InnerClass().new InnerClass1();
 		ic.callOuterInstanceMembers();

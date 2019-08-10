@@ -9,6 +9,12 @@ public class OptionalUsage {
 	static void createEmptyOptional() {
 		Optional<String> emptyString = Optional.empty();
 		System.out.println("Optional empty - isPresent: " + emptyString.isPresent());
+//		System.out.println(emptyString.get()); // throws NoSuchElementException!!!
+	}
+	
+	static void createOptionalOfNull() {
+		Optional<String> nullableString = Optional.ofNullable(null);
+		System.out.println("Optional of nullable string: " + nullableString);
 	}
 
 	static void createOptionalOfString() {
@@ -77,6 +83,8 @@ public class OptionalUsage {
 	}
 
 	public static void main(String[] args) {
+		System.out.println("___________createOptionalOfNull___________");
+		createOptionalOfNull();
 		System.out.println("___________createEmptyOptional___________");
 		createEmptyOptional();
 		System.out.println("___________createOptionalOfString___________");

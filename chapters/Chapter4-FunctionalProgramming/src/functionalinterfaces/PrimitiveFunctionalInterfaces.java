@@ -1,5 +1,7 @@
 package functionalinterfaces;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.function.BooleanSupplier;
 import java.util.function.DoubleConsumer;
@@ -74,6 +76,12 @@ public class PrimitiveFunctionalInterfaces {
 		System.out.println("----Long function----");
 		LongFunction<String> lf = d -> "Double is " + d;
 		System.out.println("Long to String function: " + lf.apply(new Random().nextLong()));
+	}
+
+	static void convertObjectToPrimitive() {
+		System.out.println("----convertObjectToPrimitive----");
+		int[] iValues = { 1, 2, 3 };
+		Arrays.stream(iValues).asLongStream();
 	}
 
 	public static void main(String[] args) {

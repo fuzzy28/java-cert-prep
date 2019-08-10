@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.Period;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -28,9 +29,18 @@ public class Instants {
 		System.out.println("Plus 20 chrono unit day: " + i);
 	}
 
+	static void zoneOffset() {
+		System.out.println("--------zoneOffset--------");
+		Instant i = Instant.now();
+		ZoneOffset zo = ZoneOffset.ofHoursMinutes(8, 0);
+		System.out.println("Instant now:" + i);
+		System.out.println("Instant with +8 offset: " + i.atOffset(zo));
+	}
+
 	public static void main(String[] args) {
 		create();
 		manipulate();
+		zoneOffset();
 	}
 
 }

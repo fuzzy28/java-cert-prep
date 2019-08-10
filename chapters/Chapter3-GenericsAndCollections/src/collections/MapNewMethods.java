@@ -39,6 +39,7 @@ public class MapNewMethods {
 	static void computeIfAbsent() {
 		Map<String, String> map = new HashMap<>();
 		map.put("name", "joel");
+		
 
 //		if (map.containsKey("lastName")) {
 //			map.put("lastName", new String("Ruelos"));
@@ -46,21 +47,21 @@ public class MapNewMethods {
 		// instead of doing the above, we can perform atomic operation like below
 
 		System.out.println(map.computeIfAbsent("lastName", (s) -> new String("Ruelos")));
-
+		System.out.println(map.computeIfAbsent("suffix", (s) -> null));
 		System.out.println(map);
 	}
 
 	static void computeIfPresent() {
 		Map<String, String> map = new HashMap<>();
 		map.put("name", "joel");
-
+		map.put("suffix", "jr");
 //		if(map.containsKey("name")) {
 //			String s = map.get("name");
 //			map.put("name", s + s);
 //		}
 		// instead of doing the above, we can perform atomic operation like below
 		map.computeIfPresent("name", (a, b) -> b + b);
-
+		map.computeIfPresent("suffix", (k,v) -> v.equals("jr") ? null : "III");
 		System.out.println(map);
 	}
 

@@ -34,7 +34,8 @@ public class SummarizingStatistics {
 		System.out.println("Average: " + iss.getAverage());
 		System.out.println("Count: " + iss.getCount());
 		System.out.println("Sum: " + iss.getSum());
-
+		iss.accept(4);
+		System.out.println(iss.getMax());
 	}
 
 	static void doubleSummaryStatistics() {

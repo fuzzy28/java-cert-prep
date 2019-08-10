@@ -31,7 +31,7 @@ public class WalkingDirectory {
 		Files.createFile(file2InsideParent);
 		Files.createFile(file1InsideSub);
 		Files.createFile(file2InsideSub);
-
+		
 	}
 
 	static void searchFromDirectory() throws IOException {
@@ -39,6 +39,8 @@ public class WalkingDirectory {
 		System.out.println("Search all java files starting from parent: " + parentDirectory.getFileName());
 		Files.find(parentDirectory, 10, (p, a) -> a.isRegularFile() && p.toString().endsWith(".java"))
 				.forEach(System.out::println);
+		
+		
 	}
 	
 	static void listDirectoryContents() throws IOException {
